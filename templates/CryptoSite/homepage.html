@@ -1,0 +1,58 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/homepage.css" %}">
+{% endblock %}
+{% block conten %}
+    <div class="container">
+        <nav>
+            <img src="{%  static "img/logo1.png" %}" class="logo">
+            <ul>
+                <li><a href={% url 'about' %}>About</a></li>
+            </ul>
+            {% if active %}
+                <form id="form-id" method="POST" action='http://127.0.0.1:8000/logout/'>
+                {% csrf_token %}
+                    <a href="#" onclick="document.forms['form-id'].submit();" class="btn">Logout</a>
+                </form>
+                <br>
+                <form id="form-id2" method="POST" action='http://127.0.0.1:8000/profile/'>
+                {% csrf_token %}
+                    <a href="#" onclick="document.forms['form-id2'].submit();" class="btn">Profile</a>
+                </form>
+            {% else %}
+            <a href='http://127.0.0.1:8000/signin/' class="btn">Sign In</a>
+            {% endif %}
+        </nav>
+
+        <div class="content">
+            <h1>BUY<br><span>CryptoCurrency</span></h1>
+            <p>Your way to Cryptocurrency is here!</p>
+            <a href='http://127.0.0.1:8000/mainpage/' class="btn">Explore More</a>
+        </div>
+        <div class="coin-list">
+            <div class="coin">
+                <img src="{% static "img/bitcoin.png" %}">
+                <div>
+                    <h3>$ {{ prices.Bitcoin }}</h3>
+                    <p>Bitcoin</p>
+                </div>
+            </div>
+            <div class="coin">
+                <img src="{% static "img/ethereum.png" %}">
+                <div>
+                    <h3>$ {{ prices.Ethereum }}</h3>
+                    <p>Ethereum</p>
+                </div>
+            </div>
+            <div class="coin">
+                <img src="{% static "img/dogecoin.png" %}">
+                <div>
+                    <h3>$ {{ prices.Dogecoin }}</h3>
+                    <p>Dogecoin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

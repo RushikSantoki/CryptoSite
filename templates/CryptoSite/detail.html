@@ -1,0 +1,46 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/detail.css" %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+{% block conten %}
+    <body class="container">
+        <nav>
+            <a href="http://127.0.0.1:8000/"> <img src="{%  static "img/logo1.png" %}" class="logo"> </a>
+        </nav>
+        <tbody>
+          <h1 style="text-align: center">Details of Crypto-Currency</h1>
+          <br>
+
+        <div style="text-align: center">
+            <img src={{image}} height='70'>
+            <br><br>
+            <h5>Currency - Name : {{ data1.currency_name }}</h5>
+            <br><br>
+            <h5>Currency - Price : $ {{ data1.currency_price }}</h5>
+            <br><br>
+            <h5>Rank : {{ data1.currency_rank }}</h5>
+            <br><br>
+            <h5>Market Value : {{ data1.market_cap }}</h5>
+            <br><br>
+              {% autoescape off %}
+                  <div class="graph">
+                  {{ plot_div }}
+                  </div>
+              {% endautoescape %}
+            <br>
+        {% if active == True %}
+            <a href="http://127.0.0.1:8000/buy/{{ data1.currency_rank  }}" class='btn-buy' id='buy'>Buy</a>
+        {% else %}
+            <a href="http://127.0.0.1:8000/signin" class='btn-buy' id='buy'>Buy</a>
+        {% endif %}
+            <br>
+            <br>
+            <br>
+        </div>
+    </tbody>
+
+    </body>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>CryptoSite - {{title}}</title>
+    {% else %}
+    <title>CryptoSite</title>
+    {% endif %}
+    {% block css_files %}{% endblock %}
+</head>
+<body>
+{% block conten %}{% endblock %}
+</body>
+</html>

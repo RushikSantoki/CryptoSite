@@ -1,0 +1,46 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/buy.css" %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+{% block conten %}
+    <body class="container">
+    <nav>
+        <a href="http://127.0.0.1:8000/"> <img src="{% static "img/logo1.png" %}" class="logo"> </a>
+    </nav>
+    <h1>Welcome {{ user.first_name }}</h1>
+    <br>
+    <h2>You can buy {{ data.currency_name }} <img src={{ image }} height='30'> Coin</h2>
+    <br>
+
+    <section class='login' id='login'>
+        <div class='head'>
+        </div>
+        <br>
+        <div class='form'>
+            <form id="form-id4" method="POST" action=".">
+                {% csrf_token %}
+                <h4>You will get {{ coins }} {{ data.currency_name }} Coins</h4>
+                <br>
+                <a href="http://127.0.0.1:8000/success/{{ data.currency_rank }}/{{ coins }}" class='btn-login' id='do-login' style="  background: none;
+                        text-decoration: none;
+                        color: white;
+                        box-shadow: 0px 0px 0px 2px white;
+                        border-radius: 3px;
+                        padding: 5px 2em;
+                        transition: 0.5s;">Confirm</a>
+            </form>
+            <br>
+            <a href="http://127.0.0.1:8000/buy/{{ data.currency_rank }}" class='btn-login' style="  background: none;
+                          text-decoration: none;
+                          color: white;
+                          box-shadow: 0px 0px 0px 2px white;
+                          border-radius: 3px;
+                          padding: 5px 2em;
+                          transition: 0.5s;">Go back</a>
+        </div>
+    </section>
+    </body>
+{% endblock %}

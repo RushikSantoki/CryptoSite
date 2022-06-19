@@ -1,0 +1,47 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/main.css" %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+{% block conten %}
+    <body class="container">
+        <nav>
+            <a href="http://127.0.0.1:8000/"> <img src="{%  static "img/logo1.png" %}" class="logo"> </a>
+        </nav>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope='col' style="color: white">Rank</th>
+                    <th scope='col' style="color: white">Name</th>
+                    <th scope='col' style="color: white">Price</th>
+                    <th scope='col' style="color: white">Percent 24h</th>
+                    <th scope='col' style="color: white">Percent 7d</th>
+                    <th scope='col' style="color: white">Market Cap</th>
+                    <th scope='col' style="color: white">Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% if data %}
+                {% for obj in data %}
+
+                      <tr>
+                          <td class="align-middle" style="color: white">{{obj.currency_rank}}</td>
+                          <td class="align-middle" style="color: white">{{obj.currency_name}}</td>
+                          <td class="align-middle" style="color: white">$ {{obj.currency_price}}</td>
+                          <td class="align-middle" style="color: white">{{obj.percent_change_24h}}</td>
+                          <td class="align-middle" style="color: white">{{obj.percent_change_7d}}</td>
+                          <td class="align-middle" style="color: white">{{obj.market_cap}}</td>
+                          <td class="align-middle" >
+                              <a href="http://127.0.0.1:8000/detail/{{obj.currency_rank}}" style="color: white">Find More</a>
+                          </td>
+                      </tr>
+                {% endfor %}
+                {% else %}
+                  <h3>No data</h3>
+              {% endif %}
+            </tbody>
+        </table>
+    </body>
+{%  endblock %}

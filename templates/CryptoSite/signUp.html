@@ -1,0 +1,38 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/signin.css" %}">
+{% endblock %}
+{% block conten %}
+    <div class="container">
+        <nav>
+            <a href="http://127.0.0.1:8000/"> <img src="{%  static "img/logo1.png" %}" class="logo"> </a>
+        </nav>
+    <section class='login' id='login'>
+      <div class='head'>
+      <h1 class='company'>SignUp</h1>
+      </div>
+        <br>
+      <div class='form'>
+          <p>{{error}}</p>
+          <br>
+        <form id='form-id2' action="." method="POST">
+            {% csrf_token %}
+            <input name="first_name" type="text" placeholder="First Name" class="text"><br><br>
+            <input name="last_name" type="text" placeholder="Last Name" class="text"><br><br>
+            <input name='username' type="text" placeholder='Username/Email' class='text' id='username' required><br>
+            <input name='password1' type="password" placeholder='Password' class='password'>
+            <input name='password2' type="password" placeholder="Confrim Password" class="password"><br>
+            <br>
+      <a href="#" class='btn-login' id='do-login' onclick="document.forms['form-id2'].submit();">Sign Up</a>
+        </form>
+          <br>
+          <br>
+          <p class="text-center">Already a Member?
+              <a href="http://127.0.0.1:8000/signin" class="signUp">Login</a>
+          </p>
+      </div>
+    </section>
+    </div>
+{%  endblock %}

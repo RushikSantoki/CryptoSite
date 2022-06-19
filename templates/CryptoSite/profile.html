@@ -1,0 +1,44 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/detail.css" %}">
+{% endblock %}
+{% block conten %}
+    <body class="container">
+        <nav>
+            <a href="http://127.0.0.1:8000/"> <img src="{%  static "img/logo1.png" %}" class="logo"> </a>
+        </nav>
+        <tbody>
+          <h1 style="text-align: center">Profile Page</h1>
+          <br>
+        <div style="text-align: center">
+            <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Profile Info</legend>
+        <div class="uform">
+            <h3>Username: {{ user.username }}</h3>
+            <h3>First Name: {{ user.first_name }} </h3>
+            <h3>Last Name : {{ user.last_name }}</h3>
+        <br>
+                        {% if data %}
+                {% for obj in data %}
+                          <h4 class="align-middle" style="color: white; font-family: Arial;">You have {{obj.amount }} coins of {{ obj.crypto_name}}</h4>
+                {% endfor %}
+                {% else %}
+                  <h3>No data</h3>
+              {% endif %}
+        </div>
+    </fieldset>
+                <br>
+    <div class="form-group">
+    </div>
+</form>
+            <br>
+
+        </div>
+
+    </tbody>
+
+    </body>
+{% endblock %}

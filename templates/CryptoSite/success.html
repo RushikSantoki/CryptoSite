@@ -1,0 +1,15 @@
+{% extends 'CryptoSite/base.html' %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "CryptoSite/buy.css" %}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+{% block conten %}
+    <body class="container">
+    <nav>
+        <a href="http://127.0.0.1:8000/"> <img src="{% static "img/logo1.png" %}" class="logo"> </a>
+    </nav>
+    <h1> Order Successful!</h1>
+    </body>
+{% endblock %}
